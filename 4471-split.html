@@ -29,10 +29,10 @@ footer{margin-top:3rem;color:var(--muted);font-size:.8rem;border-top:1px solid v
 <p>The table groups by the tenant's locale and booking form, not by intake's browser guess.</p>
 <h2>The problems</h2>
 <ol>
-<li><strong>Parser reads dates month-first</strong> (<a href="https://github.com/techybolek/mega/issues/1">ticket</a>). Every tenant writes day-first, so months and days flip. This is the one the queued fix covers. The table's note flags a few reports that read as a one-day move, likely time zones; the desk files them here, and that is a guess until engineering checks.</li>
-<li><strong>booking-v3 form hint says <code>MM/DD/YYYY</code></strong> (<a href="https://github.com/techybolek/mega/issues/2">ticket</a>). People at day-first tenants type what the hint tells them. The parser fix does not reach this.</li>
+<li><strong>Parser reads dates month-first</strong> (<a href="https://github.com/techybolek/mega/issues/1">ticket</a>). Every tenant writes day-first, so months and days flip. Fixed on 5 Oct: <code>fix(dates): parse dd/mm for eu locales</code>. The table's note flags a few reports that read as a one-day move, likely time zones; the desk files them here, and that is a guess until engineering checks.</li>
+<li><strong>booking-v3 form hint says <code>MM/DD/YYYY</code></strong> (<a href="https://github.com/techybolek/mega/issues/2">ticket</a>). People at day-first tenants type what the hint tells them. Won't fix: the booking-v3 form is retired.</li>
 </ol>
-<p class="callout">Not one issue, not one fix. Only problem 1 is covered by the queued fix.</p>
+<p class="callout">Not one issue, not one fix. Engineering closed #4471 on 5 Oct: parser fixed, hint won't fix.</p>
 <h2>Why the merge went wrong</h2>
 <p><a href="#">Decision 0001</a> merges on subject alone, and the subjects match across both problems. A new decision record should replace it.</p>
 <p class="stamp">desk ref <b>DR-P95J-QDN2</b></p>

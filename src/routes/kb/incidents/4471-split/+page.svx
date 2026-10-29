@@ -25,13 +25,13 @@ The table groups by the tenant's locale and booking form, not by intake's browse
 ## The problems
 
 1. **Parser reads dates month-first** ([ticket](https://github.com/techybolek/mega/issues/1)).
-   Every tenant writes day-first, so months and days flip. This is the one the queued fix covers. The table's note flags a few reports that read as a
+   Every tenant writes day-first, so months and days flip. Fixed on 5 Oct: `fix(dates): parse dd/mm for eu locales`. The table's note flags a few reports that read as a
    one-day move, likely time zones; the desk files them here, and that is a guess until engineering checks.
 2. **booking-v3 form hint says `MM/DD/YYYY`** ([ticket](https://github.com/techybolek/mega/issues/2)).
-   People at day-first tenants type what the hint tells them. The parser fix does not reach this.
+   People at day-first tenants type what the hint tells them. Won't fix: the booking-v3 form is retired.
 
 <Callout>
-Not one issue, not one fix. Only problem 1 is covered by the queued fix.
+Not one issue, not one fix. Engineering closed #4471 on 5 Oct: parser fixed, hint won't fix.
 </Callout>
 
 ## Why the merge went wrong
