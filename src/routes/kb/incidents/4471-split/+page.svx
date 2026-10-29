@@ -1,6 +1,6 @@
 ---
 layout: runbook
-title: '#4471 · three problems, not one'
+title: '#4471 · two problems, not one'
 owner: techybolek
 status: open
 reviewed: 2026-10-29
@@ -14,7 +14,7 @@ signature: 'v1.eyJzdWIiOiI3NDkiLCJhdWQiOiJjaGFsbGVuZ2U6d2hhdC1pdC1zaG93cyIsImlhd
 </script>
 
 [#4471](/kb/incidents/4471) merged every wrong-date report as one parser bug. The reports hold
-more than one problem. Each now has its own ticket.
+two problems. Each now has its own ticket.
 
 ## What is in #4471
 
@@ -25,12 +25,10 @@ The table groups by the tenant's locale and booking form, not by intake's browse
 ## The problems
 
 1. **Parser reads dates month-first** ([ticket](https://github.com/techybolek/mega/issues/1)).
-   Every tenant writes day-first, so months and days flip. This is the one the queued fix covers.
+   Every tenant writes day-first, so months and days flip. This is the one the queued fix covers. The table's note flags a few reports that read as a
+   one-day move, likely time zones; the desk files them here, and that is a guess until engineering checks.
 2. **booking-v3 form hint says `MM/DD/YYYY`** ([ticket](https://github.com/techybolek/mega/issues/2)).
    People at day-first tenants type what the hint tells them. The parser fix does not reach this.
-3. **Dates off by one day** ([ticket](https://github.com/techybolek/mega/issues/3)).
-   The reports in the table's note read as a one-day move, not a month flip. The cause is
-   likely time zones; this is a guess until engineering checks.
 
 <Callout>
 Not one issue, not one fix. Only problem 1 is covered by the queued fix.
@@ -39,6 +37,6 @@ Not one issue, not one fix. Only problem 1 is covered by the queued fix.
 ## Why the merge went wrong
 
 [Decision 0001](/kb/decisions/0001-dedupe-by-subject) merges on subject alone, and the subjects
-match across all three problems. A new decision record should replace it.
+match across both problems. A new decision record should replace it.
 
 <RenderStamp {signature} />
